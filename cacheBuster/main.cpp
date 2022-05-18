@@ -16,6 +16,5 @@ int main(int argc, const char * argv[]) {
 	Directory *directory = new Directory(path);
 	std::vector<File*> *files = directory->get_files();
 	delete directory;
-	
 	return 0;
 }
