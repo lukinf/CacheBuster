@@ -17,14 +17,16 @@
 
 class Directory {
 public:
-	Directory(std::string *Path);
-	std::string* GetPath();
+	Directory(std::string Path);
+	std::string get_path();
+	std::vector<File*>* get_files();
 	~Directory();
-protected:
-	std::string *path;
+private:
+	std::string path;
 	std::vector<File*> files;
-	void GetFiles(std::string Path);
-	bool CheckFileExtension(std::filesystem::path Path);
+protected:
+	void get_directory_files(std::string Path);
+	bool check_file_extension(std::filesystem::path Path);
 };
 
 #endif /* directory_hpp */
