@@ -10,7 +10,7 @@
 Directory::Directory(std::string *Path)
 {
 	path = Path;
-	std::cout << "Constructor of " + *path + "\n";
+	std::cout << "Constructor of " << *path << std::endl;
 }
 
 std::string* Directory::GetPath()
@@ -20,5 +20,5 @@ std::string* Directory::GetPath()
 
 Directory::~Directory()
 {
-	std::cout << "Destructor of " + *path + "\n";
+	std::cout << "Destructor of " << *path << std::endl;
 }

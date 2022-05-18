@@ -7,17 +7,21 @@
 
 #include <iostream>
 #include "directory.hpp"
+#include "file.hpp"
 
 int main(int argc, const char * argv[]) {
 	
-	std::string * path = new std::string("Test/test");
+	std::string *path = new std::string("Test/test");
 	
-	Directory * directory = new Directory(path);
-	directory->GetPath();
+	Directory *directory = new Directory(path);
+	std::cout << *directory->GetPath() << std::endl;
+	*path = "Test";
+	std::cout << *directory->GetPath() << std::endl;
+	
+	File *file = new File("Test");
+	
 	delete directory;
+	delete file;
 	
-	// insert code here...
-	std::cout << "Hello, World!\n";
 	return 0;
-	
 }
