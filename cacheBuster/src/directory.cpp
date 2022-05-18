@@ -11,11 +11,20 @@ Directory::Directory(std::string *Path)
 {
 	path = Path;
 	std::cout << "Constructor of " << *path << std::endl;
+	GetFiles();
 }
 
 std::string* Directory::GetPath()
 {
 	return path;
+}
+
+void Directory::GetFiles()
+{
+	for (const auto & entry : std::filesystem::directory_iterator(*path))
+	{
+		std::cout << entry.path() << std::endl;
+	}
 }
 
 Directory::~Directory()

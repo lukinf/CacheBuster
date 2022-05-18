@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <filesystem>
 
 class Directory
 {
@@ -20,6 +21,7 @@ public:
 	~Directory();
 protected:
 	std::string *path;
+	void GetFiles();
 };
 
 #endif /* directory_hpp */
