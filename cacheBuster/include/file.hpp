@@ -11,15 +11,22 @@
 #include <stdio.h>
 #include <typeinfo>
 #include <iostream>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <uuid/uuid.h>
 
-class File
-{
+class File {
 public:
-	File(std::string Name);
+	File(std::string Path);
+	void SetName(std::string Name);
+	std::string ToString();
 	~File();
 protected:
+	std::string path;
 	std::string name;
+	std::string ConvertToString(char* a, int size);
+	std::string GenerateUUID();
 };
 
 #endif /* file_hpp */
