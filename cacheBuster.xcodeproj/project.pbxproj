@@ -34,7 +34,7 @@
 		80009D642834EEB700140399 /* file.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = file.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D662835758F00140399 /* buster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buster.cpp; sourceTree = "<group>"; };
 		80009D672835758F00140399 /* buster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buster.hpp; sourceTree = "<group>"; };
-		80009D692835955400140399 /* params.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = params.h; sourceTree = "<group>"; };
+		80009D692835955400140399 /* params.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = params.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 				80009D672835758F00140399 /* buster.hpp */,
 				80009D642834EEB700140399 /* file.hpp */,
 				80009D612834EE5D00140399 /* directory.hpp */,
-				80009D692835955400140399 /* params.h */,
+				80009D692835955400140399 /* params.hpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
