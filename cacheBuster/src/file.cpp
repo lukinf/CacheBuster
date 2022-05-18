@@ -35,6 +35,12 @@ std::string File::to_string() {
   return str;
 }
 
+void File::to_file(std::string File) {
+  std::ofstream out(this->path);
+  out << File;
+  out.close();
+}
+
 std::string File::convert_to_string(char* a, int size) {
   std::string s = "";
   for (int i = 0; i < size; i++) {

@@ -21,6 +21,7 @@ public:
   File(std::string Path);
   void set_name(std::string Name);
   std::string to_string();
+  void to_file(std::string File);
   ~File();
 private:
   std::string path;
