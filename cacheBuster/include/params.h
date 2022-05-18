@@ -10,5 +10,6 @@
 
 #define UUID_LENGTH 37
 #define DEBUG_INFO 1
+#define HIDDEN_DOT 0x2E
 
 #endif /* params_h */

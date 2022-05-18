@@ -24,12 +24,12 @@ void Directory::get_directory_files(std::string Path) {
   {
     if (entry.is_directory() == true){
       hidden = entry.path().filename().c_str()[0];
-      if (hidden != 0x2E ){
+      if (hidden != HIDDEN_DOT ){
         this->get_directory_files(entry.path());
       }
     } else {
       hidden = entry.path().filename().c_str()[0];
-      if (hidden != 0x2E ){
+      if (hidden != HIDDEN_DOT ){
         if (entry.is_regular_file() == true and this->check_file_extension(entry.path()) == true){
           File *file = new File(entry.path());
           file->set_name(entry.path().filename());
