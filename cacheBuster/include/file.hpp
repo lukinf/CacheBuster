@@ -15,6 +15,7 @@
 #include <iostream>
 #include <sstream>
 #include <uuid/uuid.h>
+#include "params.h"
 
 class File {
 public:

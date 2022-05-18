@@ -14,6 +14,7 @@
 #include <filesystem>
 #include <vector>
 #include "file.hpp"
+#include "params.h"
 
 class Directory {
 public:

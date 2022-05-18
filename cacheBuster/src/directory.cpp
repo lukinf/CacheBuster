@@ -9,7 +9,8 @@
 
 Directory::Directory(std::string Path) {
   this->path = Path;
-  std::cout << "Constructor of " << this->path << std::endl;
+  if (DEBUG_INFO == 1)
+    std::cout << "Constructor of " << this->path << std::endl;
   this->get_directory_files(this->path);
 }
 
@@ -58,5 +59,6 @@ Directory::~Directory() {
   for (int i = 0; i < this->files.size(); i++) {
     delete this->files[i];
   }
-  std::cout << "Destructor of " << this->path << std::endl;
+  if (DEBUG_INFO == 1)
+    std::cout << "Destructor of " << this->path << std::endl;
 }

@@ -13,12 +13,13 @@ File::File(std::string Path) {
 
 void File::set_name(std::string Name) {
   this->name = Name;
-  std::cout << "Instance of File " << name << std::endl;
+  if (DEBUG_INFO == 1)
+    std::cout << "Instance of File " << name << std::endl;
 }
 
 std::string File::generate_uuid() {
   uuid_t out;
-  char id[37];
+  char id[UUID_LENGTH];
   uuid_generate_random(out);
   uuid_unparse_lower(out, id);
   std::string uuidStr = convert_to_string(id, sizeof(id));
@@ -50,5 +51,6 @@ std::string File::convert_to_string(char* a, int size) {
 }
 
 File::~File() {
-  std::cout << "Destructor of File " << this->name << std::endl;
+  if (DEBUG_INFO == 1)
+    std::cout << "Destructor of File " << this->name << std::endl;
 }
