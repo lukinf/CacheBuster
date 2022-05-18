@@ -11,7 +11,7 @@ Directory::Directory(std::string *Path)
 {
 	path = Path;
 	std::cout << "Constructor of " << *path << std::endl;
-	GetFiles();
+	GetFiles(*path);
 }
 
 std::string* Directory::GetPath()
@@ -19,11 +19,16 @@ std::string* Directory::GetPath()
 	return path;
 }
 
-void Directory::GetFiles()
+void Directory::GetFiles(std::string Path)
 {
-	for (const auto & entry : std::filesystem::directory_iterator(*path))
+	for (const auto & entry : std::filesystem::directory_iterator(Path))
 	{
-		std::cout << entry.path() << std::endl;
+		if (entry.is_directory() == true){
+			std::cout << "Directory - " << entry.path() << std::endl;
+			GetFiles(entry.path());
+		} else {
+			std::cout << "File - " << entry.path() << std::endl;
+		}
 	}
 }
 

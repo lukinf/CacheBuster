@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
 	
-	std::string *path = new std::string("/Users/lukas/Desktop/Projects/www.lukas.fridl.cz/js/");
+	std::string *path = new std::string("/Users/lukas/Desktop/Projects/www.lukas.fridl.cz/");
 	
 	Directory *directory = new Directory(path);
 	std::cout << *directory->GetPath() << std::endl;

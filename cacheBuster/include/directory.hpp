@@ -21,7 +21,7 @@ public:
 	~Directory();
 protected:
 	std::string *path;
-	void GetFiles();
+	void GetFiles(std::string Path);
 };
 
 #endif /* directory_hpp */
