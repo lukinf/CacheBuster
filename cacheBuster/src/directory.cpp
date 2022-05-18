@@ -18,6 +18,11 @@ std::string Directory::get_path() {
   return this->path;
 }
 
+std::vector<File*>* Directory::get_files(){
+  std::vector<File*> *vectorP;
+  return vectorP = &this->files;
+}
+
 void Directory::get_directory_files(std::string Path) {
   char hidden;
   for (const auto & entry : std::filesystem::directory_iterator(Path))
@@ -30,7 +35,7 @@ void Directory::get_directory_files(std::string Path) {
     } else {
       hidden = entry.path().filename().c_str()[0];
       if (hidden != HIDDEN_DOT ){
-        if (entry.is_regular_file() == true and this->check_file_extension(entry.path()) == true){
+        if (entry.is_regular_file() == true && this->check_file_extension(entry.path()) == true){
           File *file = new File(entry.path());
           file->set_name(entry.path().filename());
           this->files.push_back(file);
@@ -40,19 +45,28 @@ void Directory::get_directory_files(std::string Path) {
   }
 }
 
-std::vector<File*>* Directory::get_files(){
-  std::vector<File*> *vectorP;
-  return vectorP = &this->files;
+bool Directory::check_file_extension(std::filesystem::path Path){
+  switch (this->resolveOption(Path.filename().extension())) {
+    case js:
+      return true;
+      break;
+    case css:
+      return true;
+      break;
+    case html:
+      return true;
+      break;
+    default:
+      return false;
+      break;
+  }
 }
 
-bool Directory::check_file_extension(std::filesystem::path Path){
-  if (Path.filename().extension() == ".js"
-      or Path.filename().extension() == ".html"
-      or Path.filename().extension() == ".css"){
-    return true;
-  } else {
-    return false;
-  }
+Extension Directory::resolveOption(std::string input) {
+  if( input == EXT_JS ) return js;
+  if( input == EXT_CSS ) return css;
+  if( input == EXT_HTML ) return html;
+  return invalid;
 }
 
 Directory::~Directory() {

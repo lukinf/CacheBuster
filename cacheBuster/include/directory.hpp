@@ -25,6 +25,7 @@ public:
 private:
 	std::string path;
 	std::vector<File*> files;
+	Extension resolveOption(std::string input);
 protected:
 	void get_directory_files(std::string Path);
 	bool check_file_extension(std::filesystem::path Path);
