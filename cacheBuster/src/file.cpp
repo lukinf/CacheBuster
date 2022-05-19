@@ -11,10 +11,26 @@ File::File(std::string Path) {
   this->path = Path;
 }
 
+std::string File::get_name(){
+  return this->name;
+}
+
 void File::set_name(std::string Name) {
   this->name = Name;
   if (DEBUG_INFO == 1)
     std::cout << "Instance of File " << name << std::endl;
+}
+
+void File::add_reference(int Reference){
+  this->references = this->references + 1;
+}
+
+int File::get_references(){
+  return this->references;
+}
+
+std::string File::get_path(){
+  return this->path;
 }
 
 std::string File::generate_uuid() {
@@ -29,7 +45,7 @@ std::string File::generate_uuid() {
 
 std::string File::to_string() {
   std::ifstream inFile;
-  inFile.open(this->name);
+  inFile.open(this->path);
   std::stringstream strStream;
   strStream << inFile.rdbuf();
   std::string str = strStream.str();

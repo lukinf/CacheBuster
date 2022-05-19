@@ -33,7 +33,7 @@
 		80009D632834EEB700140399 /* file.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = file.cpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D642834EEB700140399 /* file.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = file.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D662835758F00140399 /* buster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buster.cpp; sourceTree = "<group>"; };
-		80009D672835758F00140399 /* buster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buster.hpp; sourceTree = "<group>"; };
+		80009D672835758F00140399 /* buster.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = buster.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D692835955400140399 /* params.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = params.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

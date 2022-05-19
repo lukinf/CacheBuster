@@ -9,5 +9,13 @@
 #define buster_hpp
 
 #include <stdio.h>
+#include <vector>
+#include "file.hpp"
+
+class Buster {
+public:
+  static void find_references(std::vector<File*>* Files);
+  static void write_new_references(std::vector<File*>* Files);
+};
 
 #endif /* buster_hpp */

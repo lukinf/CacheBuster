@@ -20,13 +20,18 @@
 class File {
 public:
   File(std::string Path);
+  std::string get_name();
   void set_name(std::string Name);
+  std::string get_path();
+  void add_reference(int Reference);
+  int get_references();
   std::string to_string();
   void to_file(std::string File);
   ~File();
 private:
   std::string path;
   std::string name;
+  int references = 0;
 protected:
   std::string convert_to_string(char* a, int size);
   std::string generate_uuid();
