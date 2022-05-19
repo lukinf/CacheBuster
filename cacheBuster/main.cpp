@@ -12,9 +12,7 @@
 
 int main(int argc, const char * argv[]) {
 	std::string path = "/Users/lukas/Desktop/Projects/www.lukas.fridl.cz/www.lukas.fridl.cz/";
-	Directory *directory = new Directory(path);
-	//directory->get_files()->at(0)->to_file("Test");
-	Buster::find_references(directory->get_files());
-	delete directory;
+	Directory directory = Directory(path);
+	Buster::find_references(directory.get_files());
 	return 0;
 }

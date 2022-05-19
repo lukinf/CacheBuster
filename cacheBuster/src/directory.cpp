@@ -8,37 +8,34 @@
 #include "directory.hpp"
 
 Directory::Directory(std::string Path) {
-  this->path = Path;
-  if (DEBUG_INFO == 1)
-    std::cout << "Constructor of " << this->path << std::endl;
-  this->get_directory_files(this->path);
+  path = Path;
+  get_directory_files(this->path);
 }
 
 std::string Directory::get_path() {
-  return this->path;
+  return path;
 }
 
-std::vector<File*>* Directory::get_files(){
-  std::vector<File*> *vectorP;
-  return vectorP = &this->files;
+std::vector<File> Directory::get_files(){
+  return files;
 }
 
 void Directory::get_directory_files(std::string Path) {
   char hidden;
-  for (const auto & entry : std::filesystem::directory_iterator(Path))
+  for (const auto &entry : std::filesystem::directory_iterator(Path))
   {
     if (entry.is_directory() == true){
       hidden = entry.path().filename().c_str()[0];
       if (hidden != HIDDEN_DOT ){
-        this->get_directory_files(entry.path());
+        get_directory_files(entry.path());
       }
     } else {
       hidden = entry.path().filename().c_str()[0];
       if (hidden != HIDDEN_DOT ){
-        if (entry.is_regular_file() == true && this->check_file_extension(entry.path()) == true){
-          File *file = new File(entry.path());
-          file->set_name(entry.path().filename());
-          this->files.push_back(file);
+        if (entry.is_regular_file() == true && check_file_extension(entry.path()) == true){
+          File file = File(entry.path());
+          file.set_name(entry.path().filename());
+          files.push_back(file);
         }
       }
     }
@@ -46,7 +43,7 @@ void Directory::get_directory_files(std::string Path) {
 }
 
 bool Directory::check_file_extension(std::filesystem::path Path){
-  switch (this->resolveOption(Path.filename().extension())) {
+  switch (resolveOption(Path.filename().extension())) {
     case js:
       return true;
       break;
@@ -70,9 +67,4 @@ Extension Directory::resolveOption(std::string input) {
 }
 
 Directory::~Directory() {
-  for (int i = 0; i < this->files.size(); i++) {
-    delete this->files[i];
-  }
-  if (DEBUG_INFO == 1)
-    std::cout << "Destructor of " << this->path << std::endl;
 }

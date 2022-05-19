@@ -20,11 +20,11 @@ class Directory {
 public:
 	Directory(std::string Path);
 	std::string get_path();
-	std::vector<File*>* get_files();
+	std::vector<File> get_files();
 	~Directory();
 private:
 	std::string path;
-	std::vector<File*> files;
+	std::vector<File> files;
 	Extension resolveOption(std::string input);
 protected:
 	void get_directory_files(std::string Path);

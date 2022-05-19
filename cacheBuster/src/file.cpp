@@ -8,29 +8,27 @@
 #include "file.hpp"
 
 File::File(std::string Path) {
-  this->path = Path;
+  path = Path;
 }
 
 std::string File::get_name(){
-  return this->name;
+  return name;
 }
 
 void File::set_name(std::string Name) {
-  this->name = Name;
-  if (DEBUG_INFO == 1)
-    std::cout << "Instance of File " << name << std::endl;
+  name = Name;
 }
 
 void File::add_reference(int Reference){
-  this->references = this->references + 1;
+  references = references + 1;
 }
 
 int File::get_references(){
-  return this->references;
+  return references;
 }
 
 std::string File::get_path(){
-  return this->path;
+  return path;
 }
 
 std::string File::generate_uuid() {
@@ -43,22 +41,21 @@ std::string File::generate_uuid() {
   return uuidStr;
 }
 
-std::string File::to_string() {
+std::unique_ptr<std::string> File::to_string() {
   std::ifstream inFile;
-  inFile.open(this->path);
+  inFile.open(path);
   std::stringstream strStream;
   strStream << inFile.rdbuf();
-  std::string str = strStream.str();
-  return str;
+  return std::make_unique<std::string>(strStream.str());
 }
 
-void File::to_file(std::string File) {
-  std::ofstream out(this->path);
+void File::to_file(const std::string& File) {
+  std::ofstream out(path);
   out << File;
   out.close();
 }
 
-std::string File::convert_to_string(char* a, int size) {
+std::string File::convert_to_string(char a[UUID_LENGTH], int size) {
   std::string s = "";
   for (int i = 0; i < size; i++) {
     s = s + a[i];
@@ -67,6 +64,4 @@ std::string File::convert_to_string(char* a, int size) {
 }
 
 File::~File() {
-  if (DEBUG_INFO == 1)
-    std::cout << "Destructor of File " << this->name << std::endl;
 }

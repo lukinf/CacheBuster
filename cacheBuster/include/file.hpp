@@ -25,8 +25,8 @@ public:
   std::string get_path();
   void add_reference(int Reference);
   int get_references();
-  std::string to_string();
-  void to_file(std::string File);
+  std::unique_ptr<std::string> to_string();
+  void to_file(const std::string &File);
   ~File();
 private:
   std::string path;
