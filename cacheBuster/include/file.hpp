@@ -21,20 +21,27 @@ class File {
 public:
   File(std::string Path);
   std::string get_name();
-  void set_name(std::string Name);
+  void set_name(std::string NewName);
+  std::string get_new_name();
+  void set_new_name(std::string NewName);
   std::string get_path();
+  std::string get_extension();
+  void set_extension(std::string Extension);
   void add_reference(int Reference);
   int get_references();
-  std::unique_ptr<std::string> to_string();
-  void to_file(const std::string &File);
+  std::string to_string();
+  void to_file(std::string File);
+  void rename(std::string NewName);
+  std::string generate_uuid();
   ~File();
 private:
   std::string path;
   std::string name;
+  std::string newName;
+  std::string extension;
   int references = 0;
 protected:
   std::string convert_to_string(char* a, int size);
-  std::string generate_uuid();
 };
 
 #endif /* file_hpp */

@@ -19,6 +19,22 @@ void File::set_name(std::string Name) {
   name = Name;
 }
 
+std::string File::get_new_name(){
+  return newName;
+}
+
+void File::set_new_name(std::string NewName) {
+  newName = NewName;
+}
+
+std::string File::get_extension(){
+  return extension;
+}
+
+void File::set_extension(std::string Extension) {
+  extension = Extension;
+}
+
 void File::add_reference(int Reference){
   references = references + 1;
 }
@@ -33,30 +49,37 @@ std::string File::get_path(){
 
 std::string File::generate_uuid() {
   uuid_t out;
-  char id[UUID_LENGTH];
+  char id[32];
   uuid_generate_random(out);
   uuid_unparse_lower(out, id);
-  std::string uuidStr = convert_to_string(id, sizeof(id));
+  auto uuidStr = convert_to_string(id, sizeof(id));
   uuidStr.erase(std::remove(uuidStr.begin(), uuidStr.end(), '-'), uuidStr.end());
   return uuidStr;
 }
 
-std::unique_ptr<std::string> File::to_string() {
+void File::rename(std::string NewName) {
+  auto newPath = path;
+  newPath = newPath.substr(0, newPath.size()-name.length());
+  newPath = newPath + NewName;
+  std::filesystem::rename(path, newPath);
+}
+
+std::string File::to_string() {
   std::ifstream inFile;
   inFile.open(path);
   std::stringstream strStream;
   strStream << inFile.rdbuf();
-  return std::make_unique<std::string>(strStream.str());
+  return strStream.str();
 }
 
-void File::to_file(const std::string& File) {
+void File::to_file(std::string File) {
   std::ofstream out(path);
   out << File;
   out.close();
 }
 
-std::string File::convert_to_string(char a[UUID_LENGTH], int size) {
-  std::string s = "";
+std::string File::convert_to_string(char a[32], int size) {
+  std::string s;
   for (int i = 0; i < size; i++) {
     s = s + a[i];
   }

@@ -15,7 +15,7 @@
 class Buster {
 public:
   static void find_references(std::vector<File> Files);
-  static void write_new_references(std::vector<File> Files);
+  static void write_new_references(std::vector<File> Files, bool FirstRun);
 };
 
 #endif /* buster_hpp */
