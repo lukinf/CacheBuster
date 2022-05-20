@@ -7,74 +7,81 @@
 
 #include "file.hpp"
 
-File::File(std::string Path) {
+File::File(const std::string& Path) {
   path = Path;
 }
 
-std::string File::get_name(){
+std::string& File::get_name(){
   return name;
 }
 
-void File::set_name(std::string Name) {
+void File::set_name(const std::string& Name) {
   name = Name;
 }
 
-std::string File::get_new_name(){
-  return newName;
+std::string& File::get_new_name(){
+  return new_name;
 }
 
-void File::set_new_name(std::string NewName) {
-  newName = NewName;
+void File::set_new_name(const std::string& NewName) {
+  new_name = NewName;
 }
 
-std::string File::get_extension(){
+std::string& File::get_extension(){
   return extension;
 }
 
-void File::set_extension(std::string Extension) {
+void File::set_extension(const std::string& Extension) {
   extension = Extension;
 }
 
-void File::add_reference(int Reference){
+void File::add_reference(const int& Reference){
   references = references + 1;
 }
 
-int File::get_references(){
+int& File::get_references(){
   return references;
 }
 
-std::string File::get_path(){
+std::string& File::get_path(){
   return path;
 }
 
-std::string File::generate_uuid() {
+std::string& File::get_new_UUID() {
   uuid_t out;
   char id[32];
   uuid_generate_random(out);
   uuid_unparse_lower(out, id);
-  auto uuidStr = convert_to_string(id, sizeof(id));
-  uuidStr.erase(std::remove(uuidStr.begin(), uuidStr.end(), '-'), uuidStr.end());
-  return uuidStr;
+  new_UUID = convert_to_string(id, sizeof(id));
+  new_UUID.erase(std::remove(new_UUID.begin(), new_UUID.end(), '-'), new_UUID.end());
+  return new_UUID;
 }
 
-void File::rename(std::string NewName) {
+void File::set_new_UUID(const std::string& NewUUID) {
+  new_UUID = NewUUID;
+}
+
+void File::rename(const std::string& NewName) {
   auto newPath = path;
   newPath = newPath.substr(0, newPath.size()-name.length());
   newPath = newPath + NewName;
   std::filesystem::rename(path, newPath);
 }
 
-std::string File::to_string() {
+std::string& File::get_content() {
+  std::string fileValue;
   std::ifstream inFile;
   inFile.open(path);
   std::stringstream strStream;
   strStream << inFile.rdbuf();
-  return strStream.str();
+  file_content = strStream.str();
+  return file_content;
 }
 
-void File::to_file(std::string File) {
+void File::set_content(const std::string& File) {
+  file_content = File;
   std::ofstream out(path);
-  out << File;
+  out << file_content;
   out.close();
 }
 

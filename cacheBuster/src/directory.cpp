@@ -7,20 +7,20 @@
 
 #include "directory.hpp"
 
-Directory::Directory(std::string Path) {
+Directory::Directory(const std::string& Path) {
   path = Path;
   get_directory_files(path);
 }
 
-std::string Directory::get_path() {
+std::string& Directory::get_path() {
   return path;
 }
 
-std::vector<File> Directory::get_files(){
+std::vector<File>& Directory::get_files(){
   return files;
 }
 
-void Directory::get_directory_files(std::string Path) {
+void Directory::get_directory_files(const std::string& Path) {
   for (const auto &entry : std::filesystem::directory_iterator(Path))
   {
     if (entry.is_directory() == true){
@@ -42,7 +42,7 @@ void Directory::get_directory_files(std::string Path) {
   }
 }
 
-bool Directory::check_file_extension(std::filesystem::path Path){
+bool Directory::check_file_extension(const std::filesystem::path& Path){
   switch (resolveOption(Path.filename().extension())) {
     case js:
       return true;
@@ -59,7 +59,7 @@ bool Directory::check_file_extension(std::filesystem::path Path){
   }
 }
 
-Extension Directory::resolveOption(std::string input) {
+Extension Directory::resolveOption(const std::string& input) {
   if( input == EXT_JS ) return js;
   if( input == EXT_CSS ) return css;
   if( input == EXT_HTML ) return html;
