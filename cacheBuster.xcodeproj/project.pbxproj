@@ -11,6 +11,7 @@
 		80009D622834EE5D00140399 /* directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80009D602834EE5D00140399 /* directory.cpp */; };
 		80009D652834EEB700140399 /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80009D632834EEB700140399 /* file.cpp */; };
 		80009D682835758F00140399 /* buster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80009D662835758F00140399 /* buster.cpp */; };
+		80009D6C28384E9D00140399 /* buster_ex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80009D6A28384E9D00140399 /* buster_ex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		80009D662835758F00140399 /* buster.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = buster.cpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D672835758F00140399 /* buster.hpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = buster.hpp; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		80009D692835955400140399 /* params.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = params.hpp; sourceTree = "<group>"; };
+		80009D6A28384E9D00140399 /* buster_ex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buster_ex.cpp; sourceTree = "<group>"; };
+		80009D6B28384E9D00140399 /* buster_ex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buster_ex.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		80009D5C2834EDF800140399 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				80009D6B28384E9D00140399 /* buster_ex.hpp */,
 				80009D672835758F00140399 /* buster.hpp */,
 				80009D642834EEB700140399 /* file.hpp */,
 				80009D612834EE5D00140399 /* directory.hpp */,
@@ -91,6 +95,7 @@
 				80009D602834EE5D00140399 /* directory.cpp */,
 				80009D632834EEB700140399 /* file.cpp */,
 				80009D662835758F00140399 /* buster.cpp */,
+				80009D6A28384E9D00140399 /* buster_ex.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				80009D682835758F00140399 /* buster.cpp in Sources */,
 				80009D522834E4A600140399 /* main.cpp in Sources */,
 				80009D622834EE5D00140399 /* directory.cpp in Sources */,
+				80009D6C28384E9D00140399 /* buster_ex.cpp in Sources */,
 				80009D652834EEB700140399 /* file.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

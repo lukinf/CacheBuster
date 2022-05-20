@@ -7,21 +7,22 @@
 
 #include "buster.hpp"
 
-void Buster::find_references(std::vector<File> Files){
-  for(auto &fileFirstLoop : Files){
+void Buster::test_run(const std::vector<File>& Files) {
+  files = Files;
+  for(auto& fileFirstLoop : files) {
     std::string fileStr = fileFirstLoop.get_content();
-    for(auto &fileSecLoop : Files){
+    for(auto &fileSecLoop : files) {
       auto position = fileStr.find(fileSecLoop.get_name());
       if (position!=std::string::npos)
         fileSecLoop.add_reference(1);
     }
   }
-  for(auto &fileResult : Files){
+  for(auto &fileResult : files){
     std::cout << fileResult.get_name() << " - " << fileResult.get_references() << " Ref" << std::endl;
   }
 }
 
-void Buster::write_new_references(bool FirstRun, std::vector<File> Files) {
+void Buster::run(const bool& FirstRun,const std::vector<File>& Files) {
   first_run = FirstRun;
   files = Files;
   generate_new_names();
@@ -30,20 +31,18 @@ void Buster::write_new_references(bool FirstRun, std::vector<File> Files) {
 }
 
 void Buster::generate_new_names() {
-  std::string uuid;
-  std::string newNameSub;
   for(auto &file : files){
     auto name = file.get_name();
     auto ext = file.get_extension();
     if (first_run == true) {
-      uuid = file.get_new_UUID();
-      newNameSub = name.substr(0, name.length() - ext.length());
+      auto uuid = file.get_new_UUID();
+      auto newNameSub = name.substr(0, name.length() - ext.length());
       std::string newName = newNameSub + "_" + uuid + ext;
       file.set_new_name(newName);
     } else {
       int charsToRemove = 28 + (int)ext.length() + 1;
-      uuid = file.get_new_UUID();
-      newNameSub = name.substr(0, name.length() - charsToRemove);
+      auto uuid = file.get_new_UUID();
+      auto newNameSub = name.substr(0, name.length() - charsToRemove);
       std::string newName = newNameSub + "_" + uuid + ext;
       file.set_new_name(newName);
     }
