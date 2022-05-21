@@ -36,6 +36,7 @@ enter_path:
 		goto enter_path;
 	}
 	
+	std::cout << std::endl;
 	Directory directory = Directory(path);
 	Buster::test_run(directory.get_files());
 	std::cout << std::endl;
