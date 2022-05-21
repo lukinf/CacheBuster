@@ -6,6 +6,7 @@
 //	/Users/lukas/Desktop/Projects/www.lukas.fridl.cz/
 
 #include <iostream>
+#include <cctype>
 #include "buster.hpp"
 #include "directory.hpp"
 #include "file.hpp"
@@ -13,15 +14,16 @@
 int main(int argc, const char * argv[]) {
 	std::string path;
 	bool firstRun = false;
-	std::string qa;
+	char qa;
 	
 first_run:
-	qa.clear();
+	qa = NULL;
 	std::cout << "First run? Y/N:";
 	std::cin >> qa;
-	if (qa == "Y") {
+	qa = toupper(qa);
+	if (qa == 'Y') {
 		qa = true;
-	} else if (qa == "N") {
+	} else if (qa == 'N') {
 		qa = false;
 	} else {
 		goto first_run;
@@ -39,12 +41,13 @@ enter_path:
 	std::cout << std::endl;
 	
 write_changes:
-	qa.clear();
+	qa = NULL;
 	std::cout << "Test run done, write changes? Y/N:";
 	std::cin >> qa;
-	if (qa == "Y") {
+	qa = toupper(qa);
+	if (qa == 'Y') {
 		Buster::run(firstRun, directory.get_files());
-	} else if (qa == "N") {
+	} else if (qa == 'N') {
 		std::cout << "No changes has been written..." << std::endl;
 	} else {
 		goto write_changes;
