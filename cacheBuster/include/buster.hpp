@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <vector>
 #include "file.hpp"
+#include <unistd.h>
 
 class Buster {
 public:

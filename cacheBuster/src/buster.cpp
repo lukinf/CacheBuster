@@ -17,8 +17,27 @@ void Buster::test_run(const std::vector<File>& Files) {
         fileSecLoop.add_reference(1);
     }
   }
+  
   for(auto &fileResult : files){
-    std::cout << fileResult.get_name() << " - " << fileResult.get_references() << " Ref" << std::endl;
+    std::cout << std::setiosflags(std::ios::fixed)
+    << std::setw(50)
+    << std::left << fileResult.get_name();
+    
+    std::cout << std::setiosflags(std::ios::fixed)
+    << std::setw(1)
+    << std::left << "-";
+    
+    std::cout << std::setiosflags(std::ios::fixed)
+    << std::setw(4)
+    << std::right << fileResult.get_references();
+    
+    std::cout << std::setiosflags(std::ios::fixed)
+    << std::setw(1)
+    << std::left << " ";
+    
+    std::cout << std::setiosflags(std::ios::fixed)
+    << std::setw(3)
+    << std::left << "Ref" << std::endl;
   }
 }
 
