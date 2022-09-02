@@ -11,6 +11,7 @@
 #include "directory.hpp"
 #include "file.hpp"
 
+
 int main(int argc, const char * argv[]) {
 	std::string path;
 	bool firstRun = false;
