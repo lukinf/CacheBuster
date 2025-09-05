@@ -21,9 +21,9 @@ first_run:
 	std::cin >> qa;
 	qa = toupper(qa);
 	if (qa == 'Y') {
-		qa = true;
+		firstRun = true;
 	} else if (qa == 'N') {
-		qa = false;
+		firstRun = false;
 	} else {
 		goto first_run;
 	}
